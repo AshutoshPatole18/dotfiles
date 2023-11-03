@@ -3,14 +3,15 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- "gopls",
-        -- "goimports-reviser",
-        -- "golines",
+        "bash-language-server",
         "shellcheck",
+        "prettier",
+        "beautysh",
         "yamlfix",
         "yamlfmt",
         "nginx-language-server",
-        "python-lsp-server"
+        "python-lsp-server",
+        "lua-language-server"
       },
     },
   },
