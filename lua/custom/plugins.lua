@@ -6,7 +6,7 @@ local plugins = {
         "bash-language-server",
         "shellcheck",
         "prettier",
-        "beautysh",
+        "shfmt",
         "yamlfix",
         "yamlfmt",
         "nginx-language-server",
@@ -14,21 +14,6 @@ local plugins = {
         "lua-language-server"
       },
     },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    init = function()
-      require("core.utils").load_mappings("dap")
-    end
-  },
-  {
-    "dreamsofcode-io/nvim-dap-go",
-    ft = "go",
-    dependencies = "mfussenegger/nvim-dap",
-    config = function(_, opts)
-      require("dap-go").setup(opts)
-      require("core.utils").load_mappings("dap_go")
-    end
   },
   {
     "neovim/nvim-lspconfig",

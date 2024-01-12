@@ -25,7 +25,7 @@ M.general = {
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-
+    ["<leader>fo"] = {":%!shfmt<CR>", "Format file"},
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 

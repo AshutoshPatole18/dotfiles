@@ -239,6 +239,7 @@ local default_plugins = {
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "telescope")
+---@diagnostic disable-next-line: different-requires
       local telescope = require "telescope"
       telescope.setup(opts)
 
