@@ -2,6 +2,7 @@
 
 local M = {}
 
+
 M.general = {
   i = {
     -- go to  beginning and end
@@ -25,7 +26,9 @@ M.general = {
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-    ["<leader>fo"] = {":%!shfmt<CR>", "Format file"},
+   
+    -- format 
+    -- ["<leader>fo"] = {":%!shfmt<CR>", "Format file"},
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
