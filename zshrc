@@ -112,5 +112,6 @@ alias cat="bat"
 alias ls="colorls"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 GOPATH=$HOME/go
+
+
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/root/.local/bin
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
