@@ -28,7 +28,7 @@ source_rc() {
 	if [ -n "$BASH_VERSION" ]; then
 		source ~/.bashrc
 	elif [ -n "$ZSH_VERSION" ]; then
-		source ~/.zshrc 
+		source ~/.zshrc
 	else
 		echo "Unknown shell"
 	fi
@@ -36,8 +36,9 @@ source_rc() {
 
 install_node_js() {
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  source_rc
-  nvm use latest
+	source_rc
+  nvm install latest
+	nvm use latest
 }
 
 function install_prerequisites() {
@@ -45,9 +46,9 @@ function install_prerequisites() {
 	detect_package_manager
 
 	if [[ "$PKG_MGR" == "yum" ]]; then
-		sudo "$PKG_MGR" install git jq golang
+		sudo "$PKG_MGR" install git jq golang -y
 	elif [[ "$PKG_MGR" == "apt-get" ]]; then
-		sudo "$PKG_MGR" install git jq golang
+		sudo "$PKG_MGR" install git jq golang -y
 	fi
 }
 
@@ -66,7 +67,7 @@ main() {
 	check_root
 	install_prerequisites
 	install_neovim
-  install_node_js
+	install_node_js
 }
 
 # entry point call
