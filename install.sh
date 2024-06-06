@@ -47,20 +47,42 @@ function install_prerequisites() {
 
 	if [[ "$PKG_MGR" == "yum" ]]; then
 		sudo "$PKG_MGR" install git jq golang -y
+    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 	elif [[ "$PKG_MGR" == "apt-get" ]]; then
 		sudo "$PKG_MGR" install git jq golang -y
 	fi
 }
 
+copy_rc_files(){
+  if [[ -r zshrc ]]; then
+    cp zshrc ~/.zshrc
+  fi
+}
+
 install_neovim() {
 	# Download Neovim app image
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-
-	# Move the downloaded file to /usr/local/bin as nvim
-	chmod +x nvim.appimage
-	mv nvim.appimage /usr/local/bin/nvim
-
+	# curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	#
+	# # Move the downloaded file to /usr/local/bin as nvim
+	# chmod +x nvim.appimage
+	# mv nvim.appimage /usr/local/bin/nvim
+	#
+  sudo $PKG_MGR install -y neovim python3-neovim
 	echo "Neovim setup complete. You can now use 'nvim' or 'vi' to open Neovim."
+}
+
+install_ohmyzsh() {
+	sudo $PKG_MGR install zsh -y
+
+  rm -rf "$HOME/.oh-my-zsh/"
+	# Install Oh My Zsh
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+	echo "Oh My Zsh installed successfully. Please restart your terminal to apply changes."
+  mv ~/.zshrc ~/.zshrc_old
+  copy_rc_files
 }
 
 main() {
@@ -68,6 +90,7 @@ main() {
 	install_prerequisites
 	install_neovim
 	install_node_js
+  install_ohmyzsh
 }
 
 # entry point call
