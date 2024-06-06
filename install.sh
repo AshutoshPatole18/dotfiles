@@ -37,8 +37,8 @@ source_rc() {
 install_node_js() {
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 	source_rc
-  nvm install latest
-	nvm use latest
+ 	nvm install 20.10.0
+	nvm use 20.10.0
 }
 
 function install_prerequisites() {
