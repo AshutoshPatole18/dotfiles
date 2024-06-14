@@ -46,16 +46,22 @@ function install_prerequisites() {
 	detect_package_manager
 
 	if [[ "$PKG_MGR" == "yum" ]]; then
-		sudo "$PKG_MGR" install git jq golang -y
+		sudo "$PKG_MGR" install git jq golang bat btop  -y
     sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 	elif [[ "$PKG_MGR" == "apt-get" ]]; then
-		sudo "$PKG_MGR" install git jq golang -y
+		sudo "$PKG_MGR" install git jq golang bat btop -y
 	fi
+
+  # install gdu
+  curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
+  chmod +x gdu_linux_amd64
+  sudo mv gdu_linux_amd64 /usr/bin/gdu
 }
 
 copy_rc_files(){
   if [[ -r zshrc ]]; then
     cp zshrc ~/.zshrc
+    cp ./.p10k.zsh ~/.p10k.zsh
   fi
 }
 
@@ -71,16 +77,9 @@ install_neovim() {
 	echo "Neovim setup complete. You can now use 'nvim' or 'vi' to open Neovim."
 }
 
-install_ohmyzsh() {
+install_zsh() {
 	sudo $PKG_MGR install zsh -y
 
-  rm -rf "$HOME/.oh-my-zsh/"
-	# Install Oh My Zsh
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-	echo "Oh My Zsh installed successfully. Please restart your terminal to apply changes."
   mv ~/.zshrc ~/.zshrc_old
   copy_rc_files
 }
@@ -90,7 +89,7 @@ main() {
 	install_prerequisites
 	install_neovim
 	install_node_js
-  install_ohmyzsh
+  install_zsh
 }
 
 # entry point call
