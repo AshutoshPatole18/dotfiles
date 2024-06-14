@@ -82,6 +82,7 @@ install_zsh() {
 
   mv ~/.zshrc ~/.zshrc_old
   copy_rc_files
+  sudo chsh -s /usr/bin/zsh
 }
 
 main() {
