@@ -77,3 +77,25 @@ alias cat='bat'
 alias du='gdu'
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+alias start_om_server="docker compose -f ~/masters/docker/development/docker-compose.yml up --build -d openmetadata-server && docker logs -f openmetadata_server"
+alias start_ingestion="docker compose -f ~/masters/docker/development/docker-compose.yml up --build -d ingestion"
+alias stop_om_server="docker compose -f ~/masters/docker/development/docker-compose.yml down"
+alias mvnbuild="cd ~/masters/ && mvn clean install -DskipTests"
+alias mvnfrontend="cd ~/masters/ && mvn clean install -DskipTests -pl mastech-ui,mastech-dist && start_om_server"
+alias drmi="sudo docker rmi $(docker images -f "dangling=true" -q)"
+
+# db2
+alias db2start="docker run -itd --name mydb2 --privileged=true -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=Temp4now -e DBNAME=MDMDB icr.io/db2_community/db2"
+
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/root/.local/bin
+
+
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

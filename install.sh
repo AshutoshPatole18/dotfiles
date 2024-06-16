@@ -60,7 +60,7 @@ function install_prerequisites() {
 
 copy_rc_files(){
   if [[ -r zshrc ]]; then
-    cp zshrc ~/.zshrc
+    cp ./.zshrc ~/.zshrc
     cp ./.p10k.zsh ~/.p10k.zsh
   fi
 }
@@ -85,12 +85,22 @@ install_zsh() {
   sudo chsh -s /usr/bin/zsh
 }
 
+post_installation_steps(){
+
+  # go lsp
+  go install golang.org/x/tools/gopls@latest
+
+  # bash lsp
+  npm i -g bash-language-server
+}
+
 main() {
 	check_root
 	install_prerequisites
 	install_neovim
 	install_node_js
   install_zsh
+  post_installation_steps
 }
 
 # entry point call
