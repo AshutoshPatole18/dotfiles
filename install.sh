@@ -46,10 +46,10 @@ function install_prerequisites() {
 	detect_package_manager
 
 	if [[ "$PKG_MGR" == "yum" ]]; then
-		sudo "$PKG_MGR" install git jq golang bat btop python-lsp-server -y
+		sudo "$PKG_MGR" install git jq golang bat btop python-lsp-server lsd -y
     sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 	elif [[ "$PKG_MGR" == "apt-get" ]]; then
-		sudo "$PKG_MGR" install git jq golang bat btop python3-pylsp -y
+		sudo "$PKG_MGR" install git jq golang bat btop python3-pylsp lsd -y
 	fi
 
   # install gdu
@@ -74,14 +74,14 @@ install_neovim() {
 	# mv nvim.appimage /usr/local/bin/nvim
 	#
   sudo $PKG_MGR install -y neovim python3-neovim
+  mkdir -pv $HOME/.config
+  cp -r ./nvim/ $HOME/.config/
 	echo "Neovim setup complete. You can now use 'nvim' or 'vi' to open Neovim."
 }
 
 install_fzf(){
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
-
-
 }
 
 install_zsh() {
@@ -107,6 +107,7 @@ main() {
 	install_neovim
 	install_node_js
   install_zsh
+  install_fzf
   post_installation_steps
 }
 
