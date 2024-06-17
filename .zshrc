@@ -75,6 +75,9 @@ alias vi='nvim'
 alias top='btop'
 alias cat='bat'
 alias du='gdu'
+alias cp='cp -v'
+
+
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -46,10 +46,10 @@ function install_prerequisites() {
 	detect_package_manager
 
 	if [[ "$PKG_MGR" == "yum" ]]; then
-		sudo "$PKG_MGR" install git jq golang bat btop python-lsp-server lsd -y
+		sudo "$PKG_MGR" install git jq golang bat btop python-lsp-server lsd tmux -y
     sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 	elif [[ "$PKG_MGR" == "apt-get" ]]; then
-		sudo "$PKG_MGR" install git jq golang bat btop python3-pylsp lsd -y
+		sudo "$PKG_MGR" install git jq golang bat btop python3-pylsp lsd tmux -y
 	fi
 
   # install gdu
@@ -62,6 +62,7 @@ copy_rc_files(){
   if [[ -r .zshrc ]]; then
     cp ./.zshrc ~/.zshrc
     cp ./.p10k.zsh ~/.p10k.zsh
+    cp ./.tmux.conf ~/.tmux.conf 
   fi
 }
 
