@@ -22,6 +22,24 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
+
+-- python 
+lspconfig.pylsp.setup{
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
+
 -- golang 
 -- lspconfig.gopls.setup {
 --   on_attach = on_attach,

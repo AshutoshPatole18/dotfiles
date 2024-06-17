@@ -12,7 +12,7 @@ check_root() {
 }
 
 detect_package_manager() {
-	if command -v yum &>/dev/null; then
+  if command -v yum &>/dev/null; then
 		# CentOS/RHEL
 		export PKG_MGR="yum"
 	elif command -v apt-get &>/dev/null; then
