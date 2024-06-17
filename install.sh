@@ -59,7 +59,7 @@ function install_prerequisites() {
 }
 
 copy_rc_files(){
-  if [[ -r zshrc ]]; then
+  if [[ -r .zshrc ]]; then
     cp ./.zshrc ~/.zshrc
     cp ./.p10k.zsh ~/.p10k.zsh
   fi
@@ -75,6 +75,13 @@ install_neovim() {
 	#
   sudo $PKG_MGR install -y neovim python3-neovim
 	echo "Neovim setup complete. You can now use 'nvim' or 'vi' to open Neovim."
+}
+
+install_fzf(){
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+
+
 }
 
 install_zsh() {
