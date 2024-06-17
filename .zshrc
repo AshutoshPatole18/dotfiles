@@ -30,8 +30,7 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
+zinit snippet OMZP::docker
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -102,3 +101,5 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/root/.local/bin
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+eval $(thefuck --alias)
