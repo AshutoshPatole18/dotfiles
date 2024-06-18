@@ -1,4 +1,4 @@
--- EXAMPLE 
+-- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -22,9 +22,8 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
-
--- python 
-lspconfig.pylsp.setup{
+-- python
+lspconfig.pylsp.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -32,15 +31,15 @@ lspconfig.pylsp.setup{
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = {'W391'},
-          maxLineLength = 100
-        }
-      }
-    }
-  }
+          ignore = { "W391" },
+          maxLineLength = 100,
+        },
+      },
+    },
+  },
 }
 
--- golang 
+-- golang
 -- lspconfig.gopls.setup {
 --   on_attach = on_attach,
 --   on_init = on_init,
