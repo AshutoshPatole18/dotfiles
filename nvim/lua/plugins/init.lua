@@ -20,7 +20,7 @@ return {
   	opts = {
   		ensure_installed = {
   			"bash-language-server", "lua-language-server", "stylua", "gopls",
-  			"html-lsp", "css-lsp" , "prettier", "python-lsp-server"
+  			"html-lsp", "css-lsp" , "prettier", "python-lsp-server", "shfmt"
   		},
   	},
   },
