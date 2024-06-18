@@ -60,9 +60,9 @@ function install_prerequisites() {
 
 copy_rc_files() {
   if [[ -r .zshrc ]]; then
-    cp ./.zshrc ~/.zshrc
-    cp ./.p10k.zsh ~/.p10k.zsh
-    cp ./.tmux.conf ~/.tmux.conf
+    cp ./.zshrc "$HOME/.zshrc"
+    cp ./.p10k.zsh "$HOME/.p10k.zsh"
+    cp ./.tmux.conf "$HOME/.tmux.conf"
   fi
 }
 
@@ -81,16 +81,16 @@ install_neovim() {
 }
 
 install_fzf() {
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME~/.fzf"
+  "$HOME/.fzf/install"
 }
 
 install_zsh() {
   sudo $PKG_MGR install zsh -y
 
-  mv ~/.zshrc ~/.zshrc_old
+  mv "$HOME/.zshrc" "$HOME~/.zshrc_old"
   copy_rc_files
-  sudo chsh -s /usr/bin/zsh
+  sudo chsh -s /usr/bin/zsh "$USER"
 }
 
 post_installation_steps() {
