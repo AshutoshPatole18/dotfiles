@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     bash = { "shfmt" },
     java = { "google-java-format" },
+    sql = { "sqls" },
   },
 
   format_on_save = {
