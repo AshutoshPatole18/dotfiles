@@ -20,8 +20,8 @@ ARG CACHEBUST=1
 RUN git clone https://github.com/AshutoshPatole18/dotfiles.git /root/dotfiles
 
 # Create the .config directory and copy the necessary files
-RUN mkdir -p /root/.config/ && \
-    cp -r /root/dotfiles/nvim /root/.config/
+RUN mkdir -pv /root/.config/ && \
+    cp -rv /root/dotfiles/nvim /root/.config/
 
 RUN /root/dotfiles/install.sh
 
