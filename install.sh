@@ -76,7 +76,7 @@ install_neovim() {
   #
   sudo $PKG_MGR install -y neovim python3-neovim
   mkdir -pv $HOME/.config/nvim
-  cp -r ./nvim/* $HOME/.config/nvim
+  cp -rv ./nvim/* $HOME/.config/nvim >> /tmp/nvim.log
   echo "Neovim setup complete. You can now use 'nvim' or 'vi' to open Neovim."
 }
 
