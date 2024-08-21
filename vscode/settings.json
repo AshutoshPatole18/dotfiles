@@ -80,7 +80,7 @@
     "go.toolsManagement.autoUpdate": true,
     "workbench.startupEditor": "none",
     "cSpell.enabled": false,
-    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.productIconTheme": "fluent-icons",
     "editor.fontSize": 16,
     "editor.experimentalInlineEdit.fontFamily": "",
@@ -98,7 +98,7 @@
     "editor.detectIndentation": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "workbench.editor.showTabs": "none",
+    // "workbench.editor.showTabs": "none",
     "editor.lineNumbers": "on",
     "editor.guides.indentation": false,
     "breadcrumbs.enabled": false,
@@ -141,7 +141,8 @@
     "editor.padding.top": 16,
     // "editor.stickyScroll.enabled": false,
     "vscode_custom_css.imports": [
-        ""
+        "file:///home/ashu/vscode.css",
+        "file:///home/ashu/vscode.js"
     ]
 }
 
