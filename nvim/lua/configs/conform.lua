@@ -4,8 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     bash = { "shfmt" },
-    java = { "google-java-format" },
-    sql = { "sqls" },
+    java = { "google-java-format" }
   },
 
   format_on_save = {
@@ -15,4 +14,4 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+return options
