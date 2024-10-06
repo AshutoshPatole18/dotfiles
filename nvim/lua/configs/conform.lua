@@ -4,7 +4,8 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     bash = { "shfmt" },
-    java = { "google-java-format" }
+    java = { "google-java-format" },
+    ts = { "ts-server" }
   },
 
   format_on_save = {
