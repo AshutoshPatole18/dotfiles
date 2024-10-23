@@ -21,7 +21,6 @@ return {
       ensure_installed = {
         "bash-language-server",
         "css-lsp",
-        "google-java-format",
         "gopls",
         "html-lsp",
         "lua-language-server",
@@ -33,12 +32,12 @@ return {
       },
     },
   },
-  --
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
         "bash",
+        "dockerfile",
         "vim",
         "lua",
         "vimdoc",
