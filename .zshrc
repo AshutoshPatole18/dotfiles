@@ -30,8 +30,11 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::docker
 zinit snippet OMZP::command-not-found
+
+source /home/ashu/.local/share/zinit/snippets/OMZP::docker/OMZP::docker
+
+fpath=(~/.zsh/completions $fpath)
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -66,6 +69,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
+zicompinit
 
 # Shell integrations
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -80,22 +84,26 @@ alias cat='bat'
 alias du='gdu'
 alias cp='cp -v'
 alias rm='rm -v'
-alias bat='/usr/bin/cat'
+alias cats='/usr/bin/cat'
 alias search="fzf --preview 'bat --color=always {}'"
 
 # Temp aliases (project specifics)
-alias start_om_server="docker compose -f ~/masters/docker/development/docker-compose.yml up --build -d openmetadata-server && docker logs -f openmetadata_server"
-alias start_ingestion="docker compose -f ~/masters/docker/development/docker-compose.yml up --build -d ingestion"
+alias start_om_server="docker compose -f ~/masters/docker/development/docker-compose-original.yml up --build -d openmetadata-server && docker logs -f openmetadata_server"
+alias start_ingestion="docker compose -f ~/masters/docker/development/docker-compose-original.yml up --build -d ingestion"
 alias stop_om_server="docker compose -f ~/masters/docker/development/docker-compose.yml down"
 alias mvnbuild="cd ~/masters/ && mvn clean install -DskipTests"
 alias mvnfrontend="cd ~/masters/ && mvn clean install -DskipTests -pl mastech-ui,mastech-dist && start_om_server"
-alias drmi="sudo docker rmi $(docker images -f "dangling=true" -q)"
+alias mvnbackend="cd ~/masters/ && mvn clean install -DskipTests -pl mastech-spec,mastech-service,mastech-dist && start_om_server"
+# alias drmi="sudo docker rmi \"$(docker images -f "dangling=true" -q)"
+# alias drmi="sudo docker rmi \"\$(docker images -f \\\"dangling=true\\\" -q)\""
+alias drmi='sudo docker rmi "$(docker images -f '\''dangling=true'\'' -q)"'
+alias postman='cd ~/Downloads/Postman/ && ./Postman'
 
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/root/.local/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/root/.local/bin:/home/ashu/Downloads/platform-tools-latest-linux/platform-tools
 
 # Node Version Manager
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -103,5 +111,26 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 
+
 fpath+=($ZSH/plugins/docker)
 autoload -U compinit && compinit
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Created by `pipx` on 2024-08-23 08:05:53
+export PATH="$PATH:/home/ashu/.local/bin"
+
+
+
+export DATABASE_URL="jdbc:postgresql://postgres:5432/gyms"
+export DATABASE_USER=somethinguser
+export DATABASE_PASSWORD=somethingpassword
+
+# export DATABASE_URL="jdbc:postgresql://localhost:5432/gyms"
+# export DATABASE_USER=gym
+# export DATABASE_PASSWORD=gymowner
+
+alias k="kubectl"
